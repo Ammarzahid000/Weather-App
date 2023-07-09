@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Weather App</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+    <form>
+        <h1>Weather App</h1>
+        <br>
+        <input type="text" id="city" placeholder="Enter your city name">
+        <br>
+        <input type="submit" class="btn" value="Get Weather" onclick="getWeather()">
+        <br>
+        <div id="result"></div>
+    </form>
+   <br>
+
+    <script>
+        function getWeather() {
+            event.preventDefault();
+             let city = document.getElementById("city").value; 
+          
+
+            let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=7488dfcc0f3c4308bade4b519bd8b272`
+
+
+            fetch(url)
+                .then((res) => res.json())
+                .then((data) => {
+                    document.getElementById("result").textContent = `Weather 
+                    in ${city} is ${data.main.temp - 273}`;
+
+                } )
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
